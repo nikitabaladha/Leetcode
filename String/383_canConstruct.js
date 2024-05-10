@@ -61,6 +61,7 @@ var canConstruct = function (ransomNote, magazine) {
   }
   return true;
 };
+
 console.log(canConstruct(ransomNote, magazine));
 
 // ----------------------------------------------------------------------------------------------------------------------
