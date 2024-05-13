@@ -26,6 +26,65 @@ var isAnagram = function (s, t) {
 
 console.log(isAnagram(s, t));
 
+// ======================================Better Way Less Memory, Less Time=========================================
+
+var isAnagram = function (s, t) {
+  if (s.length !== t.length) {
+    return false;
+  }
+
+  const sCharCount = {};
+
+  for (let i = 0; i < s.length; i++) {
+    const char = s[i];
+
+    if (!sCharCount[char]) {
+      sCharCount[char] = 1;
+    } else {
+      sCharCount[char]++;
+    }
+  }
+
+  for (let i = 0; i < t.length; i++) {
+    if (!sCharCount[t[i]] || sCharCount[t[i]] === 0) {
+      return false;
+    }
+    sCharCount[t[i]]--;
+  }
+
+  return true;
+};
++console.log(isAnagram(s, t));
+
+// =================================================================================================================
+
+var isAnagram = function (s, t) {
+  if (s.length !== t.length) {
+    return false;
+  }
+
+  const sCharCount = {};
+  const tCharCount = {};
+
+  for (let i = 0; i < s.length; i++) {
+    const char = s[i];
+    sCharCount[char] = (sCharCount[char] || 0) + 1;
+  }
+
+  for (let i = 0; i < t.length; i++) {
+    const char = t[i];
+    tCharCount[char] = (tCharCount[char] || 0) + 1;
+  }
+
+  for (let char in sCharCount) {
+    if (sCharCount[char] !== tCharCount[char]) {
+      return false;
+    }
+  }
+
+  return true;
+};
+
 // ====================================Javacode=============================
 
 // import java.util.Arrays;
